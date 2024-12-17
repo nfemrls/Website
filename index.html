@@ -45,16 +45,17 @@
   </head>
   <body>
 
-    <h1 style="color: black;">You have a Problem?</h1>
-    <input type="text" value="" placeholder="Title">
+    <h1>You have a Problem?</h1>
+    <input id="title" type="text" value="" placeholder="Title">
     <br>
-    <textarea type="text" value="" placeholder="Problem"></textarea>
+    <input id="problem" type="text" value="" placeholder="Problem">
     <br>
-    <input id="chk1" type="checkbox" /><label for="chk1" style="color: white;">Anonym</label>
+    <input id="chk1" type="checkbox" onchange="AnonymChange(this)" /><label for="chk1">Anonym</label>
+    <input id="name" type="text" value="" placeholder="Name">
     <br>
-    <input id="chk2" type="checkbox" /><label for="chk2" style="color: white;" >Hilfslehrer</label>
+    <input id="chk2" type="checkbox" /><label for="chk2">Hilfslehrer</label>
     <br>
-    <input id="chk3" type="checkbox" /><label for="chk3" style="color: white;">Sekretariat</label>
+    <input id="chk3" type="checkbox" /><label for="chk3">Sekretariat</label>
     <br>
     <button type="button" onclick="Submit()">Submit</button>
 
@@ -63,11 +64,7 @@
       <div class="Container">
         <div class="Row">
           <div class="Comments">
-            <h1><u>Letzter Kommentar </u></h1>
-            <div class="Comment">
-              <h2>Hilfe Hausaufgaben</h2>
-              <p>Hallo ich habe Probleme mit meinen HA...</p>
-            </div>
+            <h1>Problems</h1>
           </div>
         </div>
       </div>
@@ -76,7 +73,50 @@
     <!--- Logic --->
     <script>
       function Submit() {
-        alert("I am an alert box!");
+        // Get the values from the input fields
+        var title = document.getElementById('title').value;
+        var problem = document.getElementById('problem').value;
+        var name = document.getElementById('name').value;
+        
+        // Create a new comment element
+        var commentDiv = document.createElement('div');
+        commentDiv.classList.add('Comment');
+        
+        // Create a new title element and append it
+        var commentTitle = document.createElement('h2');
+        commentTitle.textContent = title;
+        commentDiv.appendChild(commentTitle);
+        
+        // Create a new problem paragraph and append it
+        var commentText = document.createElement('p');
+        commentText.textContent = problem;
+        commentDiv.appendChild(commentText);
+
+        //Create a new name paragraph and append it
+        if (!document.getElementById("chk1").checked){
+          var commentName = document.createElement('p');
+          commentName.textContent = '~' + name;
+          commentDiv.append(commentName);
+        }
+
+        // Append the new comment to the comments section
+        var commentsContainer = document.querySelector('.Comments');
+        commentsContainer.appendChild(commentDiv);
+
+        // Clear the input fields after submitting
+        document.getElementById('title').value = '';
+        document.getElementById('problem').value = '';
+      }
+
+      function AnonymChange(element) {
+        const checked = element.checked;
+        
+        if (!checked){
+          document.getElementById("name").style.display = "inline";
+        }
+        else {
+          document.getElementById("name").style.display = "none";
+        }
       }
     </script>
   </body>

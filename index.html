@@ -251,28 +251,10 @@
           }
         }
 
-        // Kommentar erstellen
-        var commentDiv = document.createElement('div');
-        commentDiv.classList.add('Comment');
-
-        // Titel und Problem hinzufügen
-        var commentTitle = document.createElement('h2');
-        commentTitle.textContent = title;
-        commentDiv.appendChild(commentTitle);
-
-        var commentText = document.createElement('p');
-        commentText.textContent = problem;
-        commentDiv.appendChild(commentText);
-
-        if (!anonymCheckbox.checked) {
-          var commentName = document.createElement('p');
-          commentName.textContent = '~ ' + name;
-          commentDiv.appendChild(commentName);
-        }
-
-        // Kommentar zur Sektion hinzufügen
-        var commentsContainer = document.querySelector('.Comments');
-        commentsContainer.appendChild(commentDiv);
+        const request = new Request("localhost:3010", {
+        method: "POST",
+        body: JSON.stringify({ username: "example" }),
+        });
 
         // Eingabefelder zurücksetzen
         document.getElementById('title').value = '';

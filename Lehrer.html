@@ -3,6 +3,103 @@
   <head>
     <meta charset="utf-8">
     <title>ArwedRossBachSchule-Hilfe</title>
+    <style>
+      /* Allgemeines Styling */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('back.jpeg'); /* Hintergrundbild */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        flex-direction: column; /* Für vertikale Ausrichtung */
+      }
+
+      /* Container für den Inhalt */
+      .container {
+        background-color: rgba(41, 39, 39, 0.8); /* Leicht durchsichtiger Hintergrund */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+        margin-top: 20px; /* Abstand oben */
+      }
+
+      h1 {
+        font-size: 2.5em;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      /* Sicherstellen, dass der Button unter der Probleme-Überschrift bleibt */
+      .button-container {
+        margin-top: 20px;
+        text-align: center; /* Damit der Button unter der Überschrift zentriert ist */
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      /* Container für die einzelnen Probleme */
+      .comment {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 100%;
+        transition: all 0.3s ease; /* Füge eine Übergangsanimation hinzu */
+        cursor: pointer; /* Zeigt an, dass der Container interaktiv ist */
+      }
+
+      .comment h2 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      .comment p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 5px;
+      }
+
+      /* Hover-Effekt - Container wird größer */
+      .comment:hover {
+        transform: scale(1.1); /* Vergrößert den Container um 10% */
+        z-index: 10; /* Stellt sicher, dass der vergrößerte Container oben ist */
+      }
+
+      /* Sicherstellen, dass der Container für Probleme sichtbar ist */
+      .problems-section {
+        margin-top: 40px; /* Platz für den Button und den Text */
+        text-align: left;
+        width: 100%;
+        max-width: 800px;
+      }
+    </style>
   </head>
   <body>
     <button type="button" onclick="getData()">Load</button>
@@ -24,18 +121,18 @@
             var commentDiv = document.createElement('div');
             commentDiv.classList.add('Comment');
 
-            // Titel und Problem hinzufügen
-            var commentTitle = document.createElement('h2');
-            commentTitle.textContent = title;
-            commentDiv.appendChild(commentTitle);
+        // Titel und Problem hinzufügen
+        var commentTitle = document.createElement('h2');
+        commentTitle.textContent = title;
+        commentDiv.appendChild(commentTitle);
 
-            var commentText = document.createElement('p');
-            commentText.textContent = problem;
-            commentDiv.appendChild(commentText);
+        var commentText = document.createElement('p');
+        commentText.textContent = problem;
+        commentDiv.appendChild(commentText);
 
-            var commentName = document.createElement('p');
-            commentName.textContent = '~ ' + name;
-            commentDiv.appendChild(commentName);
+        var commentName = document.createElement('p');
+        commentName.textContent = '~ ' + name;
+        commentDiv.appendChild(commentName);
 
             // Kommentar zur Sektion hinzufügen
             var commentsContainer = document.querySelector('.Problems');

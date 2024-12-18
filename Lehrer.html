@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ArwedRossBachSchule-Hilfe</title>
+  </head>
+  <body>
+    <button type="button" onclick="LoadProblems()">Load</button>
+
+    <section>
+        <div class="Container">
+            <div class="Row">
+                <div class="Problems">
+                    <h1>Problems</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function LoadProblems() 
+        {
+            const title = "HILFE";
+            const problem = "Der Matthias mobt mich";
+            const name = "Eugen";
+
+            // Kommentar erstellen
+            var commentDiv = document.createElement('div');
+            commentDiv.classList.add('Comment');
+
+            // Titel und Problem hinzufügen
+            var commentTitle = document.createElement('h2');
+            commentTitle.textContent = title;
+            commentDiv.appendChild(commentTitle);
+
+            var commentText = document.createElement('p');
+            commentText.textContent = problem;
+            commentDiv.appendChild(commentText);
+
+            var commentName = document.createElement('p');
+            commentName.textContent = '~ ' + name;
+            commentDiv.appendChild(commentName);
+
+            // Kommentar zur Sektion hinzufügen
+            var commentsContainer = document.querySelector('.Problems');
+            commentsContainer.appendChild(commentDiv);
+        }
+    </script>
+  </body>
+</html>

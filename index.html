@@ -4,181 +4,279 @@
     <meta charset="utf-8">
     <title>ArwedRossBachSchule-Hilfe</title>
     <style>
-      /* Hintergrundbild festlegen */
+      /* Allgemeines Styling */
       body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
         background-image: url('back.jpeg'); /* Pfad zum Bild */
-        background-size: cover; /* Bild wird auf die gesamte Seite skaliert */
-        background-position: center; /* Bild wird zentriert */
-        background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
       }
-      
-      input[type="text"] {
-        padding: 8px;
-        margin: 5px 0;
-        width: 300px;
+
+      h1 {
+        font-size: 2.5em;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
       }
-      input[type="checkbox"] {
-        margin: 5px 0;
+
+      /* Container für das Formular */
+      .form-container {
+        background-color: rgba(41, 39, 39, 0.663); /* Leicht durchsichtiger Hintergrund */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
       }
+
+      input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1em;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
       button {
-        padding: 10px 15px;
+        padding: 12px 20px;
         background-color: #4CAF50;
         color: white;
         border: none;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 1.1em;
+        width: 100%;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
       }
+
       button:hover {
         background-color: #45a049;
       }
-      .Container {
-        margin-top: 20px;
+
+      label {
+        color: #555;
+        font-weight: bold;
       }
+
+      .checkbox-container {
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      .checkbox-container label {
+        font-size: 1em;
+        margin-left: 5px;
+      }
+
+      .comments-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 600px;
+        text-align: left;
+      }
+
       .Comment {
-        padding: 10px;
-        border: 1px solid #ddd;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
         margin-bottom: 10px;
-        background-color: rgba(255, 255, 255, 0.7); /* Hintergrundfarbe für Kommentare, damit sie besser sichtbar sind */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
+
+      .Comment h2 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      .Comment p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 5px;
+      }
+
+      /* Login Popup */
       .loginPopup {
         width: 400px;
         background: #fff;
         border-radius: 6px;
         position: absolute;
-        top: 0%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0.1);
         text-align: center;
-        padding: 0 30px 30px;
-        color: #333;
+        padding: 30px;
         visibility: hidden;
         transition: transform 0.4s, top 0.4s;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
       }
+
       .loginPopup h2 {
-        font-size: 38px;
-        font-weight: 500;
-        margin: 30px 0 10px;
+        font-size: 30px;
+        margin-bottom: 20px;
       }
-      .loginPopup button {
-        width: 100%;
-        margin-top: 10px;
-        padding: 10px 0;
-        background: #6fd649;
-        color: #fff;
-        border: 0;
-        outline: none;
-        font-size: 18px;
-        border-radius: 4px;
-        cursor: pointer;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-      }
+
       .loginPopup input {
         width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
+        padding: 12px;
+        margin: 10px 0;
         box-sizing: border-box;
+        border-radius: 8px;
+        border: 1px solid #ccc;
       }
+
+      .loginPopup button {
+        width: 100%;
+        padding: 12px;
+        background-color: #6fd649;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+      }
+
+      .loginPopup button:hover {
+        background-color: #5bb645;
+      }
+
       .open-loginPopup {
         visibility: visible;
-        top: 50%;
         transform: translate(-50%, -50%) scale(1);
       }
+
       span {
-      cursor:pointer;
-      color:blue;
-      text-decoration:underline;
+        cursor: pointer;
+        color: #0066cc;
+        text-decoration: underline;
+      }
+
+      /* Header Styling - Positionierung des Login Buttons */
+      header {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+      }
+
+      /* Responsives Design */
+      @media (max-width: 768px) {
+        .form-container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        header {
+          top: 15px;
+          right: 15px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Lehrer Login Button -->
     <header>
       <span onclick="openLoginPopup()">Lehrer-Login</span>
     </header>
 
-    <h1>You have a Problem?</h1>
-    <input id="title" type="text" value="" placeholder="Title">
-    <br>
-    <input id="problem" type="text" value="" placeholder="Problem">
-    <br>
-    <input id="chk1" type="checkbox" onchange="AnonymChange(this)" /><label for="chk1">Anonym</label>
-    <input id="name" type="text" value="" placeholder="Name">
-    <br>
-    <input id="chk2" type="checkbox" /><label for="chk2">Hilfslehrer</label>
-    <br>
-    <input id="chk3" type="checkbox" /><label for="chk3">Sekretariat</label>
-    <br>
-    <button type="button" onclick="Submit()">Submit</button>
-
-    <!--- Comments --->
-    <section>
-      <div class="Container">
-        <div class="Row">
-          <div class="Comments">
-            <h1>Problems</h1>
-          </div>
-        </div>
+    <!-- Formular Container -->
+    <div class="form-container">
+      <h1><ins>Hast du ein Problem?</ins></h1>
+      <input id="title" type="text" placeholder="Titel des Problems">
+      <input id="problem" type="text" placeholder="Beschreibe dein Problem">
+      
+      <div class="checkbox-container">
+        <input id="chk1" type="checkbox" onchange="AnonymChange(this)" />
+        <label for="chk1" style="color:wheat;">Anonym</label>
       </div>
-    </section>
 
-    <!--- Login Popup --->
-    <div class="loginPopup" id="loginPopup">
-      <h2>Lehrer Login</h2>
-      <input type="email" placeholder="E-Mail">
-      <br>
-      <input type="password" placeholder="Password">
-      <br>
-      <button type="button" onclick="login()">Login</button>
-      <br>
-      <button type="button" onclick="closeLoginPopup()">Close</button>
+      <input id="name" type="text" placeholder="Dein Name">
+      
+      <div class="checkbox-container">
+        <input id="chk2" type="checkbox" />
+        <label for="chk2"  style="color:wheat;">Hilfslehrer</label>
+      </div>
+      <div class="checkbox-container">
+        <input id="chk3" type="checkbox" />
+        <label for="chk3"  style="color:wheat;">Sekretariat</label>
+      </div>
+
+      <button type="button" onclick="Submit()">Absenden</button>
     </div>
 
-    <!--- Logic --->
+    
+
+    <!-- Login Popup -->
+    <div class="loginPopup" id="loginPopup">
+     <h2><ins >Lehrer Login</ins></h2>
+      <input type="email" placeholder="E-Mail">
+      <input type="password" placeholder="Passwort">
+      <button type="button" onclick="login()">Login</button>
+      <button type="button" onclick="closeLoginPopup()">Schließen</button>
+    </div>
+
     <script>
       let loginPopup = document.getElementById("loginPopup");
 
       function Submit() {
-        // Get the values from the input fields
         var title = document.getElementById('title').value;
         var problem = document.getElementById('problem').value;
         var name = document.getElementById('name').value;
         var anonymCheckbox = document.getElementById('chk1');
 
-        if (title == "" || problem == ""){
+        if (title == "" || problem == "") {
           return;
         }
-        if (!anonymCheckbox.checked){
-          if (name == ""){
+        if (!anonymCheckbox.checked) {
+          if (name == "") {
             return;
           }
         }
-        
-        // Create a new comment element
+
+        // Kommentar erstellen
         var commentDiv = document.createElement('div');
         commentDiv.classList.add('Comment');
-        
-        // Create a new title element and append it
+
+        // Titel und Problem hinzufügen
         var commentTitle = document.createElement('h2');
         commentTitle.textContent = title;
         commentDiv.appendChild(commentTitle);
-        
-        // Create a new problem paragraph and append it
+
         var commentText = document.createElement('p');
         commentText.textContent = problem;
         commentDiv.appendChild(commentText);
 
-        //Create a new name paragraph and append it
-        if (!anonymCheckbox.checked){
+        if (!anonymCheckbox.checked) {
           var commentName = document.createElement('p');
-          commentName.textContent = '~' + name;
-          commentDiv.append(commentName);
+          commentName.textContent = '~ ' + name;
+          commentDiv.appendChild(commentName);
         }
 
-        // Append the new comment to the comments section
+        // Kommentar zur Sektion hinzufügen
         var commentsContainer = document.querySelector('.Comments');
         commentsContainer.appendChild(commentDiv);
 
-        // Clear the input fields after submitting
+        // Eingabefelder zurücksetzen
         document.getElementById('title').value = '';
         document.getElementById('problem').value = '';
         document.getElementById('name').value = '';
@@ -186,13 +284,7 @@
 
       function AnonymChange(element) {
         const checked = element.checked;
-        
-        if (!checked){
-          document.getElementById("name").style.display = "inline";
-        }
-        else {
-          document.getElementById("name").style.display = "none";
-        }
+        document.getElementById("name").style.display = checked ? "none" : "inline-block";
       }
 
       function openLoginPopup() {
@@ -204,7 +296,7 @@
       }
 
       function login() {
-
+        // Login-Logik hier
       }
     </script>
   </body>
